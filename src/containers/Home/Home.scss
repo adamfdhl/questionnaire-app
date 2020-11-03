@@ -1,0 +1,44 @@
+.Home {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	h1 {
+		font-size: 2.5rem;
+		margin: 0.5rem 0;
+		@media (max-width: 600px) {
+			font-size: 1.5rem;
+		}
+	}
+	h3 {
+		font-size: 1.5rem;
+		margin: 0.5rem 0;
+		@media (max-width: 600px) {
+			font-size: 1.2rem;
+		}
+	}
+	input {
+		margin: 0.5rem 0;
+		border: none;
+		border-bottom: 1px solid black;
+		width: 20vh;
+		outline: none;
+		&:focus {
+			width: 30vh;
+		}
+	}
+	button {
+		width: 20vh;
+		height: 5vh;
+		border-radius: 1rem;
+		color: black;
+		background-color: white;
+		text-transform: uppercase;
+		cursor: pointer;
+		&:hover {
+			color: white;
+			background-color: rgb(110, 109, 109);
+		}
+	}
+}
