@@ -13,6 +13,7 @@ class Ladderboard extends React.Component {
       users: []
     }
     this.renderTable = this.renderTable.bind(this)
+    // this.detailUserHandler = this.detailUserHandler.bind(this)
   }
 
   componentDidMount() {
@@ -26,6 +27,10 @@ class Ladderboard extends React.Component {
       })
   }
 
+  detailUserHandler = (userId) => {
+    this.props.history.push(`/detail-user/${userId}`)
+  }
+
   renderTable() {
     return this.state.users
           .sort((a, b) => b.total_point - a.total_point)
@@ -33,7 +38,7 @@ class Ladderboard extends React.Component {
             return (
               <tr key={idx} className="table-item">
                 <td><span>{idx + 1}</span></td>
-                <td className="username">{user.username}</td>
+                <td className="username" onClick={() => this.detailUserHandler(user._id)}>{user.username}</td>
                 <td>{user.total_point}</td>
               </tr>
             )

@@ -1,0 +1,43 @@
+.DetailUser {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	.card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 450px;
+		height: 450px;
+		border: 10px solid #252d4a;
+		padding: 1rem;
+		overflow-y: auto;
+		.detail-header {
+			margin-bottom: 1rem;
+			padding-bottom: 0.5rem;
+			border-bottom: 2px solid #252d4a;
+			h1 {
+				margin: 0;
+			}
+			p {
+				margin: 0;
+			}
+		}
+		.detail-questions {
+			text-align: left;
+			.question {
+				margin: 0.5rem;
+				border: 3px solid #252d4a;
+				border-radius: 1rem;
+				padding: 0.5rem;
+				.question-text {
+					font-weight: bold;
+				}
+				.question-answer {
+					margin-left: 1rem;
+				}
+			}
+		}
+	}
+}

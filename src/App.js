@@ -7,6 +7,7 @@ import Home from "./containers/Home/Home"
 import Questionnaire from "./containers/Questionnaire/Questionnaire"
 import Score from "./containers/Score/Score"
 import Ladderboard from "./containers/Ladderboard/Ladderboard"
+import DetailUser from "./containers/DetailUser/DetailUser"
 
 import './App.css';
 
@@ -20,6 +21,9 @@ class App extends React.Component {
       <BrowserRouter>
         <Slide left>
           <div className="App">
+            <Route path="/detail-user/:id" exact>
+              <DetailUser {...this.props}/>
+            </Route>
             <Route path="/ladderboard" exact component={Ladderboard} />
             <Route path="/score" exact component={() => <Score {...this.props} />} />
             <Route path="/questionnaire" exact component={() => <Questionnaire {...this.props} />} />

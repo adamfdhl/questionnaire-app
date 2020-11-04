@@ -36,6 +36,7 @@ class Score extends React.Component {
     axios.post(`${ENDPOINT_URL}/users/answer`, data)
       .then(response => {
         console.log(response)
+        this.props.history.push("/ladderboard")
       })
       .catch(err => {
         console.log(err)
