@@ -9,6 +9,7 @@ class Score extends React.Component {
   constructor(props) {
     super(props)
     this.countTotalScore = this.countTotalScore.bind(this)
+    this.submitDataHandler = this.submitDataHandler.bind(this)
   }
 
   countTotalScore() {
@@ -24,29 +25,39 @@ class Score extends React.Component {
   }
 
   submitDataHandler() {
-    const dataUsername = {
-      username: this.props.user.username
+    const username = this.props.user.username.username
+    const userAnswer = this.props.user.userAnswer
+    const totalScore = this.props.user.totalScore
+    const data = {
+      username, 
+      userAnswer,
+      totalScore
     }
-    const dataUserAnswer = {
-
-    }
-    axios.all([
-      axios.post(`${ENDPOINT_URL}/users/add`, dataUsername),
-      
-    ])
+    axios.post(`${ENDPOINT_URL}/users/answer`, data)
+      .then(response => {
+        console.log(response)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className="Score">
-        {this.props.user.totalScore === 0 ? (
-          <h1>You already answered all the questions. Click reveal score button to see your score</h1>
-        ) : (
-          <h1>You answerd {this.props.user.totalScore} out of 10 questions correctly!</h1>
-        )}
-        <button onClick={this.countTotalScore}>Reveal Score</button>
-        <button onClick={this.submitDataHandler}>Go to ladderboard</button>
+        <div className="card">
+          {this.props.user.totalScore === 0 ? (
+            <React.Fragment>
+              <h1>You already answered all the questions. Click reveal score button to see your score</h1>
+              <button onClick={this.countTotalScore}>Reveal Score</button>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <h1>You answerd {this.props.user.totalScore} out of 10 questions correctly!</h1>
+              <button onClick={this.submitDataHandler}>Go to ladderboard</button>
+            </React.Fragment>
+          )}
+        </div>
       </div>
     )
   }

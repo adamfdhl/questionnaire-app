@@ -20,14 +20,6 @@ class Home extends React.Component {
     const data = {
       username: this.state.username
     }
-    // axios.post(`${ENDPOINT_URL}/users/add`, data)
-    //   .then(res => {
-    //     console.log(res)
-    //     this.props.history.push("/questionnaire")
-    //   })
-    //   .catch(err => {
-    //     console.log(err)
-    //   })
     this.props.updateUsername(data)
     this.props.history.push("/questionnaire")
   }
@@ -38,7 +30,7 @@ class Home extends React.Component {
         <h1>Welcome To PopoQuiz</h1>
         <h3>Please write your name down here:</h3>
         <input type="text" placeholder="Username..." value={this.state.username} onChange={e => this.setState({username: e.target.value})}/>
-        <button type="submit" onClick={e => this.submitUsernameHandler(e)}>Go!</button>
+        <button type="submit" disabled={this.state.username === ""} onClick={e => this.submitUsernameHandler(e)}>Go!</button>
       </div>
     )
   }

@@ -1,0 +1,32 @@
+.Score {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	.card {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 450px;
+		height: 450px;
+		border: 10px solid #252d4a;
+		button {
+			width: 50vh;
+			height: 5vh;
+			margin: 0.5rem 0;
+			cursor: pointer;
+			border: 3px solid black;
+			border-radius: 1rem;
+			color: black;
+			background-color: white;
+			outline: none;
+			&:hover {
+				color: white;
+				background-color: #252d4a;
+				border-color: white;
+			}
+		}
+	}
+}
