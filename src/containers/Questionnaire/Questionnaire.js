@@ -12,11 +12,10 @@ class Questionnaire extends React.Component {
   }
 
   answerClickedHandler = (ansId) => {
-    // const nextQuestion = this.state.currQuestion + 1
     if (this.props.user.currQuestion < this.props.questions.questions.length) {
       this.props.updateUserAnswer(ansId)
-      // this.setState({currQuestion: nextQuestion})
     } else {
+      this.props.updateUserAnswer(ansId)
       this.props.history.push("/score")
     }
   }
@@ -25,13 +24,13 @@ class Questionnaire extends React.Component {
     return (
       <React.Fragment>
         <div className="question">
-          <div className="question__text">{this.props.questions.questions[this.props.user.currQuestion].question}</div>
+          <div className="question__text">{this.props.questions.questions[this.props.user.currQuestion - 1].question}</div>
           <div className="question__count">
-            <span>Question {this.props.user.currQuestion + 1}</span>/{this.props.questions.questions.length}
+            <span>Question {this.props.user.currQuestion}</span>/{this.props.questions.questions.length}
           </div>
         </div>
         <div className="answer-options">
-          {this.props.questions.questions[this.props.user.currQuestion].answer_options.map((option, index) => {
+          {this.props.questions.questions[this.props.user.currQuestion - 1].answer_options.map((option, index) => {
             return <button key={index} onClick={() => this.answerClickedHandler(index)}>{option}</button>
           })}
         </div>

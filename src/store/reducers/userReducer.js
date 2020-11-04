@@ -3,7 +3,7 @@ import * as actionTypes from "../actions/actionTypes"
 const initState = {
   username: null,
   userAnswer: [],
-  currQuestion: 0
+  currQuestion: 1
 }
 
 const questionsReducer = (state = initState, action) => {
