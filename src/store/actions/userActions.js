@@ -12,3 +12,8 @@ export const updateUserAnswer = (userAnswer) => ({
   type: actionTypes.UPDATE_USER_ANSWER,
   userAnswer
 })
+
+export const updateUserScore = (score) => ({
+  type: actionTypes.UPDATE_USER_SCORE,
+  score
+})

@@ -33,7 +33,6 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className="Home">
         <h1>Welcome To PopoQuiz</h1>

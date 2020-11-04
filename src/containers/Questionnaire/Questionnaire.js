@@ -19,7 +19,7 @@ class Questionnaire extends React.Component {
       this.props.history.push("/score")
     }
   }
-
+  
   renderQuestions = () => {
     return (
       <React.Fragment>
