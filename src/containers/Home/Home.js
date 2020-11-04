@@ -1,9 +1,10 @@
 import React from 'react'
-import axios from 'axios'
+import {withRouter} from "react-router-dom"
+// import axios from 'axios'
 
 import "./Home.scss"
 
-const ENDPOINT_URL = "https://questionnarie-app-api.herokuapp.com"
+// const ENDPOINT_URL = "https://questionnarie-app-api.herokuapp.com"
 
 class Home extends React.Component {
   constructor(props) {
@@ -19,17 +20,20 @@ class Home extends React.Component {
     const data = {
       username: this.state.username
     }
-    axios.post(`${ENDPOINT_URL}/users/add`, data)
-      .then(res => {
-        console.log(res)
-        this.props.history.push("/questionnaire")
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    // axios.post(`${ENDPOINT_URL}/users/add`, data)
+    //   .then(res => {
+    //     console.log(res)
+    //     this.props.history.push("/questionnaire")
+    //   })
+    //   .catch(err => {
+    //     console.log(err)
+    //   })
+    this.props.updateUsername(data)
+    this.props.history.push("/questionnaire")
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className="Home">
         <h1>Welcome To PopoQuiz</h1>
@@ -41,4 +45,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home
+export default withRouter(Home)

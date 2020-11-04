@@ -8,17 +8,16 @@ class Questionnaire extends React.Component {
     super(props)
     this.state = {
       currQuestion: 0,
-      userAnswer: []
     }
   }
 
   answerClickedHandler = (ansId) => {
-    const nextQuestion = this.state.currQuestion + 1
-    const answer = [...this.state.userAnswer, ansId]
-    if (this.state.currQuestion < this.props.questions.length) {
-      this.setState({currQuestion: nextQuestion, userAnswer: answer})
+    // const nextQuestion = this.state.currQuestion + 1
+    if (this.props.user.currQuestion < this.props.questions.questions.length) {
+      this.props.updateUserAnswer(ansId)
+      // this.setState({currQuestion: nextQuestion})
     } else {
-      // this.setState({userAnswer: answer})
+      this.props.history.push("/score")
     }
   }
 
@@ -26,13 +25,13 @@ class Questionnaire extends React.Component {
     return (
       <React.Fragment>
         <div className="question">
-          <div className="question__text">{this.props.questions[this.state.currQuestion].question}</div>
+          <div className="question__text">{this.props.questions.questions[this.props.user.currQuestion].question}</div>
           <div className="question__count">
-            <span>Question {this.state.currQuestion + 1}</span>/{this.props.questions.length}
+            <span>Question {this.props.user.currQuestion + 1}</span>/{this.props.questions.questions.length}
           </div>
         </div>
         <div className="answer-options">
-          {this.props.questions[this.state.currQuestion].answer_options.map((option, index) => {
+          {this.props.questions.questions[this.props.user.currQuestion].answer_options.map((option, index) => {
             return <button key={index} onClick={() => this.answerClickedHandler(index)}>{option}</button>
           })}
         </div>
@@ -41,11 +40,10 @@ class Questionnaire extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className="Questionnaire">
         <div className="card">
-          {this.props.questions.length !== 0 ? this.renderQuestions() : null}
+          {this.props.questions.questions.length !== 0 ? this.renderQuestions() : null}
         </div>
       </div>
     )

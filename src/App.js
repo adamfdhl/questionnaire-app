@@ -1,41 +1,43 @@
 import React from "react"
-import axios from "axios"
+import {connect} from "react-redux"
 import {BrowserRouter, Route} from "react-router-dom"
+import * as actions from "./store/actions"
 import Home from "./containers/Home/Home"
 import Questionnaire from "./containers/Questionnaire/Questionnaire"
 
 import './App.css';
 
-const ENDPOINT_URL = "https://questionnarie-app-api.herokuapp.com"
-
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      questions: []
-    }
-  }
-
   componentDidMount() {
-    axios.get(`${ENDPOINT_URL}/questionnaires`)
-      .then(response => {
-        this.setState({ questions: response.data })
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    this.props.fetchQuestions()
   }
 
   render() {
+    console.log(this.props)
     return (
       <BrowserRouter>
         <div className="App">
-          <Route path="/questionnaire" exact component={() => <Questionnaire {...this.state} />} />
-          <Route path="/" exact component={Home} />
+          <Route path="/questionnaire" exact component={() => <Questionnaire {...this.props} />} />
+          <Route path="/" exact component={() => <Home {...this.props} />} />
         </div>
       </BrowserRouter>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    questions: state.questions,
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchQuestions: () => dispatch(actions.fetchQuestions()),
+    updateUsername: (username) => dispatch(actions.updateUsername(username)),
+    updateUserAnswer: (userAnswer) => dispatch(actions.updateUserAnswer(userAnswer))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
