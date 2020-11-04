@@ -1,10 +1,12 @@
 import React from "react"
+import Slide from "react-reveal/Slide"
 import {connect} from "react-redux"
 import {BrowserRouter, Route} from "react-router-dom"
 import * as actions from "./store/actions"
 import Home from "./containers/Home/Home"
 import Questionnaire from "./containers/Questionnaire/Questionnaire"
 import Score from "./containers/Score/Score"
+import Ladderboard from "./containers/Ladderboard/Ladderboard"
 
 import './App.css';
 
@@ -16,11 +18,14 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="App">
-          <Route path="/score" exact component={() => <Score {...this.props} />} />
-          <Route path="/questionnaire" exact component={() => <Questionnaire {...this.props} />} />
-          <Route path="/" exact component={() => <Home {...this.props} />} />
-        </div>
+        <Slide left>
+          <div className="App">
+            <Route path="/ladderboard" exact component={Ladderboard} />
+            <Route path="/score" exact component={() => <Score {...this.props} />} />
+            <Route path="/questionnaire" exact component={() => <Questionnaire {...this.props} />} />
+            <Route path="/" exact component={() => <Home {...this.props} />} />
+          </div>
+        </Slide>
       </BrowserRouter>
     );
   }

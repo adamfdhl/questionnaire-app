@@ -22,10 +22,11 @@
 		margin: 0.5rem 0;
 		border: none;
 		border-bottom: 1px solid black;
-		width: 20vh;
+		width: 25vh;
 		outline: none;
+		transition: width 0.4s ease;
 		&:focus {
-			width: 30vh;
+			width: 35vh;
 		}
 	}
 	button {
@@ -36,9 +37,12 @@
 		background-color: white;
 		text-transform: uppercase;
 		cursor: pointer;
-		&:hover {
+		&:hover:enabled {
 			color: white;
 			background-color: rgb(110, 109, 109);
+		}
+		&:disabled {
+			cursor: not-allowed;
 		}
 	}
 }
