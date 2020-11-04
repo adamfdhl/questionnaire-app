@@ -1,2 +1,2 @@
 export { fetchQuestions } from "./questionsActions";
-export {updateUsername, updateUserAnswer, updateUserScore} from "./userActions"
+export {updateUsername, updateUserAnswer, updateUserScore, updateSelectedUser} from "./userActions"

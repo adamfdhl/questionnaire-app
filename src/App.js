@@ -24,7 +24,7 @@ class App extends React.Component {
             <Route path="/detail-user/:id" exact>
               <DetailUser {...this.props}/>
             </Route>
-            <Route path="/ladderboard" exact component={Ladderboard} />
+            <Route path="/ladderboard" exact component={() => <Ladderboard {...this.props} />} />
             <Route path="/score" exact component={() => <Score {...this.props} />} />
             <Route path="/questionnaire" exact component={() => <Questionnaire {...this.props} />} />
             <Route path="/" exact component={() => <Home {...this.props} />} />
@@ -47,7 +47,8 @@ const mapDispatchToProps = dispatch => {
     fetchQuestions: () => dispatch(actions.fetchQuestions()),
     updateUsername: (username) => dispatch(actions.updateUsername(username)),
     updateUserAnswer: (userAnswer) => dispatch(actions.updateUserAnswer(userAnswer)),
-    updateUserScore: (score) => dispatch(actions.updateUserScore(score))
+    updateUserScore: (score) => dispatch(actions.updateUserScore(score)),
+    updateSelectedUser: (userId) => dispatch(actions.updateSelectedUser(userId))
   }
 }
 

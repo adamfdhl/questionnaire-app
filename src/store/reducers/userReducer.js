@@ -4,7 +4,8 @@ const initState = {
   username: null,
   userAnswer: [],
   currQuestion: 1,
-  totalScore: 0
+  totalScore: 0,
+  selectedUser: null
 }
 
 const questionsReducer = (state = initState, action) => {
@@ -24,6 +25,11 @@ const questionsReducer = (state = initState, action) => {
       return {
         ...state,
         totalScore: action.score
+      }
+    case actionTypes.UPDATE_SELECTED_USER:
+      return {
+        ...state,
+        selectedUser: action.userId
       }
     default:
       return state

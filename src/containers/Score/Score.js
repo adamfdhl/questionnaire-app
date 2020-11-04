@@ -1,4 +1,5 @@
 import React from 'react'
+import {withRouter} from "react-router-dom"
 import axios from "axios"
 
 import "./Score.scss"
@@ -64,4 +65,4 @@ class Score extends React.Component {
   }
 }
 
-export default Score
+export default withRouter(Score)

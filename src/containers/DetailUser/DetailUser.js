@@ -3,7 +3,6 @@ import axios from 'axios'
 
 import "./DetailUser.scss"
 
-const id = window.location.pathname.split("/")[2]
 const ENDPOINT_URL = "https://questionnarie-app-api.herokuapp.com"
 
 class DetailUser extends React.Component {
@@ -17,7 +16,7 @@ class DetailUser extends React.Component {
 
   componentDidMount() {
     axios
-      .get(`${ENDPOINT_URL}/users/${id}`)
+      .get(`${ENDPOINT_URL}/users/${this.props.user.selectedUser}`)
       .then(response => {
         this.setState({user: response.data})
       })
@@ -45,6 +44,7 @@ class DetailUser extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className="DetailUser">
         <div className="card">

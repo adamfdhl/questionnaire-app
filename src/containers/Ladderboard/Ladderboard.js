@@ -1,4 +1,5 @@
 import React from 'react'
+import {withRouter} from "react-router-dom"
 import axios from "axios"
 
 import TrophyImage from "../../assets/images/trophy.jpg"
@@ -28,6 +29,7 @@ class Ladderboard extends React.Component {
   }
 
   detailUserHandler = (userId) => {
+    this.props.updateSelectedUser(userId)
     this.props.history.push(`/detail-user/${userId}`)
   }
 
@@ -55,12 +57,16 @@ class Ladderboard extends React.Component {
           </div>
           <div className="ladder-table">
             <table>
-              <tr className="table-header">
-                <th>Rank</th>
-                <th>Username</th>
-                <th>Score</th>
-              </tr>
-              {this.renderTable()}
+              <thead>
+                <tr className="table-header">
+                  <th>Rank</th>
+                  <th>Username</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.users ? this.renderTable() : null}
+              </tbody>
             </table>
           </div>
         </div>
@@ -69,4 +75,4 @@ class Ladderboard extends React.Component {
   }
 }
 
-export default Ladderboard
+export default withRouter(Ladderboard)
